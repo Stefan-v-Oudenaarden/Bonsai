@@ -36,7 +36,6 @@ jobs:
         id: prepare
         with:
           project-path: Blazor WASM/Blazor WASM.csproj
-          publish-path: /home/runner/work/Bonsai/Bonsai/_out/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
