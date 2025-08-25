@@ -29,3 +29,4 @@ App_Data/
 *.kra*
 
 */wwwroot/*
+/publish/*

@@ -28,7 +28,7 @@ jobs:
 
       # Publish the site
       - name: Publish
-        run: dotnet publish Bonsai 2025.sln -c:Release -o:publish -p:GHPages=true
+        run:  dotnet publish "Bonsai 2025.sln" -c:Release -o:publish -p:GHPages=true
 
       # Deploy the site
       - name: Deploy
