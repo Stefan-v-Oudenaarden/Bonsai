@@ -3,5 +3,16 @@
 <PageTitle>Home</PageTitle>
 
 <h1 class="p-4 font-bold text-blue-600">Blorgh Hello, world!</h1>
+<LumexButton @onclick="LumexButtonClickHandler">Click me</LumexButton>
 
-Welcome to your new app.
+<p>@Count</p>
+
+
+@code{
+    public int Count = 5;
+
+    public void LumexButtonClickHandler()
+    {
+        Count++;  
+    }
+}
