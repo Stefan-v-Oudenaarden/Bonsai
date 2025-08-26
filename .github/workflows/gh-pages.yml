@@ -3,7 +3,7 @@ name: github pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: [ "publish" ]
+    branches: ["publish"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,13 +15,13 @@ jobs:
       # Checkout the code
       - uses: actions/checkout@v4
 
-      #Install NPM      
+      #Install NPM
       - uses: actions/setup-node@v4
 
       #Install Tailwind, etc in Blazor WASM Solution
       - name: Install Tailwind tools
-      run: npm install
-      working-directory: "./Blazor WASM"
+        run: npm install
+        working-directory: "./Blazor WASM"
 
       # Install .NET SDK
       - name: Setup .NET SDK
