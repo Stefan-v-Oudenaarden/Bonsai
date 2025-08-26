@@ -15,7 +15,9 @@ Thumbs.db
 *.log
 *.dtbcache.v2
 *.vs
-[Bb]in
+bin/release
+bin/debug
+
 [Dd]ebug*/
 *.sbr
 obj/
