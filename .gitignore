@@ -29,5 +29,6 @@ App_Data/
 *.kra*
 
 
+*/wwwroot/css/dist.css
 /publish/*
 /public/*
