@@ -15,6 +15,14 @@ jobs:
       # Checkout the code
       - uses: actions/checkout@v4
 
+      #Install NPM      
+      - uses: actions/setup-node@v4
+
+      #Install Tailwind, etc in Blazor WASM Solution
+      - name: Install Tailwind tools
+      run: npm install
+      working-directory: "./Blazor WASM"
+
       # Install .NET SDK
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
