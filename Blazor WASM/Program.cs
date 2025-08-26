@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using LumexUI.Extensions;
 
 namespace Blazor_WASM
 {
@@ -12,6 +13,7 @@ namespace Blazor_WASM
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddLumexServices();
 
             await builder.Build().RunAsync();
         }
