@@ -5,14 +5,15 @@
 <h1 class="p-4 font-bold text-blue-600">Blorgh Hello, world!</h1>
 <LumexButton @onclick="LumexButtonClickHandler">Click me</LumexButton>
 
-<p>@Count</p>
+<p>@Name</p>
 
 
 @code{
-    public int Count = 5;
+    public RandomNameGenerator names = new AllRealNames();
+    public string Name = "";
 
     public void LumexButtonClickHandler()
     {
-        Count++;  
+        Name = names.Next();
     }
 }
