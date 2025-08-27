@@ -14,6 +14,10 @@
 		<PackageReference Include="PublishSPAforGitHubPages.Build" Version="3.0.1" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\BonsaiGenerators\BonsaiGenerators.csproj" />
+	</ItemGroup>
+
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 		<Exec Command="npm run build:css" />

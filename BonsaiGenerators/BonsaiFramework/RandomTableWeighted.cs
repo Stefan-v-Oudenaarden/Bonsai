@@ -1,0 +1,69 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace BonsaiGenerators
+{
+    public class RandomTableWeighted : RandomGenerator, IEnumerable<KeyValuePair<string, int>>
+    {
+        public Dictionary<string, int> Entries { get; set; } = new();
+
+        public RandomTableWeighted()
+        {
+        }
+
+        public RandomTableWeighted(string search, RandomGenerator replace, string prefix = "", string suffix = "")
+        {
+            Replacements.Add((search, replace));
+            Prefix = prefix;
+            Suffix = suffix;
+        }
+
+        public RandomTableWeighted(List<(string, RandomGenerator)> replacements, string prefix = "", string suffix = "")
+        {
+            Replacements = replacements;
+            Prefix = prefix;
+            Suffix = suffix;
+        }
+
+        public RandomTableWeighted(string prefix, string suffix = "")
+        {
+            Prefix = prefix;
+            Suffix = suffix;
+        }
+
+        public void Add(string key, int value = 1)
+        {
+            Entries.Add(key, value);
+        }
+
+        public IEnumerator<KeyValuePair<string, int>> GetEnumerator()
+        {
+            return Entries.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public override string Next(string Seed = "")
+        {
+            if (Seed != "")
+            {
+                Genie.SetSeed(Seed);
+            }
+
+            var randomElement = Entries.RandomElementWeighted();
+            randomElement = $"{Prefix}{randomElement}{Suffix}";
+
+            randomElement = DynamicInterpolation(randomElement, Replacements);
+
+            return randomElement;
+        }
+
+        public override string ToString()
+        {
+            return Next();
+        }
+    }
+}
