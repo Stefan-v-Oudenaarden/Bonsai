@@ -1,15 +1,10 @@
-﻿@page "/"
+﻿@page "/Names"
 
-<PageTitle>Bonsai - Random Generators</PageTitle>
+<PageTitle>Bonsai - Names</PageTitle>
 
 <main>
-    <h1 class="py-2 text-3xl font-bold">Bonsai Random Generators</h1>
-
-    <p class="py-2">Bonsai random generators are here to help or amuse you by randomly generating things like rpg characters, names, scenarios or miscellaneous things.</p>
     
-    <LumexDivider />
-
-    <h1 class="py-2 text-3xl font-bold"><a href="names">Names</a></h1>
+    <h1 class="py-2 text-3xl font-bold">Names</h1>
 
     <ul class="not-prose mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
         @foreach (var item in RealNamesGeneratorList)
@@ -31,11 +26,10 @@
             </li>
         }
     </ul>
-    
 
 </main>
 
-@code{
+@code {
     public List<NamesGeneratorItem> RealNamesGeneratorList = RealNamesStaticModel.RealNamesGeneratorList;
 
 }

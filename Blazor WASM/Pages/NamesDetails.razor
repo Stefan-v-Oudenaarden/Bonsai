@@ -1,0 +1,17 @@
+﻿@page "/Names/{Culture}"
+
+<PageTitle>Bonsai - Names</PageTitle>
+
+<main>
+    <h1 class="py-2 text-3xl font-bold">@CultureDisplayName</h1>
+
+    <LumexButton onclick="Generate">More</LumexButton>
+
+    <ul>
+    @foreach(var name in Names)
+    {
+        <li>@name</li>
+    }
+    </ul>
+</main>
+
