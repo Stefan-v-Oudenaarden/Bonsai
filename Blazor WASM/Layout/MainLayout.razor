@@ -1,8 +1,59 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <main>
-        <article class="">
+
+
+<LumexNavbar Sticky="@true" Bordered="@true">
+    @* <LumexNavbarMenuToggle Class="sm:hidden" /> *@
+    <LumexNavbarBrand>
+        <img src="/assets/img/logo/bonsai.png" class="mr-4 h-8 w-8">
+        <span class="text-xl font-bold">
+            Bonsai
+        </span>
+    </LumexNavbarBrand>
+
+    @* <LumexNavbarContent Class="hidden sm:flex">
+        <LumexNavbarItem>
+            <LumexLink Href="/examples/navbar/sticky#"
+                       Color="@ThemeColor.None">
+                Home
+            </LumexLink>
+    </LumexNavbarContent> *@
+
+    <LumexNavbarContent Align="@Align.End">
+        <LumexNavbarItem>
+            <a href="https://github.com/Stefan-v-Oudenaarden/Bonsai">
+            <img src="/assets/logos/github_light.svg" class="mr-4 h-8 w-8" />
+            </a>
+        </LumexNavbarItem>
+    </LumexNavbarContent>
+</LumexNavbar>
+
+<div class="container mx-auto max-w-7xl px-6">
+    <aside class="fixed inset-0 top-[65px] right-auto left-[max(0px,calc(50%-40rem))] block w-[16rem] overflow-y-auto pb-10 pl-6">
+        <nav class="pt-10">
+            <ul>
+                @foreach(var menuitem in items)
+                {
+                    <li>@menuitem</li>
+                }
+            </ul>
+        </nav>
+    </aside>
+    <div class="lg:pl-[14.5rem]">
+        <div class="pt-10 lg:px-10">
             @Body
-        </article>
-    </main>
+        </div>        
+    </div>
 </div>
+
+@code {
+    public List<string> items = new();
+
+    protected override void OnInitialized()
+    {
+        for(int i =0; i < 150; i++)
+        {
+            items.Add(i.ToString());
+        }
+    }
+
+}

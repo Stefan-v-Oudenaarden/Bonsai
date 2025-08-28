@@ -2,18 +2,34 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1 class="p-4 font-bold text-blue-600">Blorgh Hello, world!</h1>
-<LumexButton @onclick="LumexButtonClickHandler">Click me</LumexButton>
-
-<p>@Name</p>
-
+<main>
+    @foreach (var paragraph in _paragraphs)
+    {
+        <p>@paragraph</p>
+    }
+</main>
 
 @code{
-    public RandomNameGenerator names = new AllRealNames();
-    public string Name = "";
+    private readonly List<string> _paragraphs = new();
 
-    public void LumexButtonClickHandler()
+    protected override void OnInitialized()
     {
-        Name = names.Next();
+        var loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+        var random = new Random();
+        var paragraphCount = 1000;
+
+        for (int i = 0; i < paragraphCount; i++)
+        {
+            var words = loremIpsum.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var sb = new StringBuilder();
+
+            for (int j = 0; j < random.Next(15, 40); j++)
+            {
+                sb.Append(words[random.Next(words.Length)]).Append(" ");
+            }
+
+            _paragraphs.Add(sb.ToString().Trim());
+        }
     }
 }
