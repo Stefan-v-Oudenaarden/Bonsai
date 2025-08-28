@@ -1,8 +1,23 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <main>
-        <article class="">
+@using Blazor_WASM.Components
+
+
+<Navbar />
+
+<div class="container mx-auto max-w-7xl px-6">
+    <aside class="fixed inset-0 top-[65px] right-auto left-[max(0px,calc(50%-40rem))] hidden w-[16rem] overflow-y-auto pb-10 pl-6 lg:block">
+        <nav class="pt-10">
+            <Sidebar />
+        </nav>
+    </aside>
+    <div class="lg:pl-[14.5rem]">
+        <div class="pt-10 lg:px-10">
             @Body
-        </article>
-    </main>
+        </div>        
+    </div>
 </div>
+
+@code {
+
+
+}
