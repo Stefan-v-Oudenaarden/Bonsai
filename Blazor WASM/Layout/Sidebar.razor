@@ -1,8 +1,15 @@
-﻿<h3 class="font-semibold">Bonsai Generators</h3>
-<ul>    
-    <li>Names</li>    
+﻿<a><h3 class="font-semibold">Names</h3></a>
+<ul>
+    
+    @foreach (var item in RealNamesGeneratorList)
+    {
+    <li>
+        <a href="names/@item.Name">@item.DisplayName</a>
+    </li>
+    }
+    
 </ul>
 
 @code {
-
+    public List<NamesGeneratorItem> RealNamesGeneratorList = RealNamesStaticModel.RealNamesGeneratorList;
 }
