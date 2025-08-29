@@ -11,13 +11,13 @@
         {
             <li>
                 <a href="names/@item.Name">
-                    <LumexCard Class="h-40 w-64">
+                    <LumexCard Class="h-40 w-64 transition-transform duration-150 hover:scale-105">
                         <img src="@item.CardImage"
                              class="h-full object-cover object-[0_47%]"
                              alt="Card background" />
                         <LumexCardFooter Blurred="@true"
                                          Class="bg-background/10 rounded-large absolute bottom-2 left-2 z-10 w-[calc(100%_-_1rem)] py-2">
-                            <div class="flex flex-grow flex-col text-white/85">
+                            <div class="flex flex-grow flex-col text-black/85">
                                 <h4 class="text-base font-bold">@item.DisplayName Names</h4>
                             </div>
                         </LumexCardFooter>
