@@ -10,20 +10,20 @@
     
     <LumexDivider />
 
-    <h1 class="py-2 text-3xl font-bold"><a href="names">Names</a></h1>
+    <h1 class="py-2 text-3xl font-bold"><a href="realnames">Names</a></h1>
 
     <ul class="not-prose mt-8 grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-2">
        
         <li>
-            <a href="names">
+            <a href="realnames">
                 <LumexCard Class="h-60 w-96 transform transition-transform duration-150 hover:scale-105">
                     <img src="assets/icons/people.svg"
-                         class="h-full object-cover object-[0_47%]"
+                         class="h-full object-fill"
                          alt="Card background" />
                     <LumexCardFooter Blurred="@true"
                                      Class="bg-background/10 rounded-large absolute bottom-2 left-2 z-10 w-[calc(100%_-_1rem)] py-2">
                         <div class="flex flex-grow flex-col text-black/85">
-                            <h4 class="text-base font-bold">Pick Country/Culture</h4>
+                            <h4 class="text-base font-bold">Pick</h4>
                         </div>
                     </LumexCardFooter>
                 </LumexCard>
@@ -31,10 +31,10 @@
         </li>
 
         <li>
-            <a href="names/global">
+            <a href="realnames/allreal">
                 <LumexCard Class="h-60 w-96 transform transition-transform duration-150 hover:scale-105">
                     <img src="assets/flags/globe.svg"
-                            class="h-full object-cover object-[0_47%]"
+                         class="h-full object-fill"
                             alt="Card background" />
                     <LumexCardFooter Blurred="@true"
                                         Class="bg-background/10 rounded-large absolute bottom-2 left-2 z-10 w-[calc(100%_-_1rem)] py-2">
@@ -48,6 +48,43 @@
         
     </ul>
     
+    <h1 class="mt-12 py-2 text-3xl font-bold"><a href="fantasynames">Fantasy Names</a></h1>
+
+    <ul class="not-prose mt-8 grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-2">
+
+        <li>
+            <a href="fantasynames">
+                <LumexCard Class="h-60 w-96 transform transition-transform duration-150 hover:scale-105">
+                    <img src="assets/icons/people.svg"
+                         class="h-full object-fill"
+                         alt="Card background" />
+                    <LumexCardFooter Blurred="@true"
+                                     Class="bg-background/10 rounded-large absolute bottom-2 left-2 z-10 w-[calc(100%_-_1rem)] py-2">
+                        <div class="flex flex-grow flex-col text-black/85">
+                            <h4 class="text-base font-bold">Pick</h4>
+                        </div>
+                    </LumexCardFooter>
+                </LumexCard>
+            </a>
+        </li>
+
+        <li>
+            <a href="fantasynames/allfantasy">
+                <LumexCard Class="h-60 w-96 transform transition-transform duration-150 hover:scale-105">
+                    <img src="assets/icons/dozen.svg"
+                         class="h-full object-fill"
+                         alt="Card background" />
+                    <LumexCardFooter Blurred="@true"
+                                     Class="bg-background/10 rounded-large absolute bottom-2 left-2 z-10 w-[calc(100%_-_1rem)] py-2">
+                        <div class="flex flex-grow flex-col text-black/85">
+                            <h4 class="text-base font-bold">Random from All Names</h4>
+                        </div>
+                    </LumexCardFooter>
+                </LumexCard>
+            </a>
+        </li>
+
+    </ul>
 
 </main>
 

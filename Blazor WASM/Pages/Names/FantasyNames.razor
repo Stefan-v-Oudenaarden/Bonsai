@@ -1,0 +1,35 @@
+﻿@page "/FantasyNames"
+
+<PageTitle>Bonsai - Fantasy Names</PageTitle>
+
+<main>
+    
+    <h1 class="py-2 text-3xl font-bold">Names</h1>
+
+    <ul class="not-prose mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+        @foreach (var item in FantasyNamesGeneratorList)
+        {
+            <li>
+                <a href="fantasynames/@item.Name">
+                    <LumexCard Class="h-40 w-64 transition-transform duration-150 hover:scale-105">
+                        <img src="@item.CardImage"
+                             class="h-full object-fill"
+                             alt="Card background" />
+                        <LumexCardFooter Blurred="@true"
+                                         Class="bg-background/10 rounded-large absolute bottom-2 left-2 z-10 w-[calc(100%_-_1rem)] py-2">
+                            <div class="flex flex-grow flex-col text-black/85">
+                                <h4 class="text-base font-bold">@item.DisplayName Names</h4>
+                            </div>
+                        </LumexCardFooter>
+                    </LumexCard>
+                </a>
+            </li>
+        }
+    </ul>
+
+</main>
+
+@code {
+    public List<NamesGeneratorItem> FantasyNamesGeneratorList = FantasyNameStaticModel.FantasyNamesGeneratorList;
+
+}

@@ -15,7 +15,7 @@
 
         public static List<NamesGeneratorItem> RealNamesGeneratorList =
         [
-            new() { Name = "global", DisplayName = "All", CardImage = "assets/flags/globe.svg", Generator = typeof(AllRealNames) },
+            new() { Name = "allreal", DisplayName = "All", CardImage = "assets/flags/globe.svg", Generator = typeof(AllRealNames) },
 
             new() { Name = "american", DisplayName = "American", CardImage = "assets/flags/us.svg", Generator = typeof(AmericanNames) },
             new() { Name = "chinese", DisplayName = "Chinese", CardImage = "assets/flags/cn.svg", Generator = typeof(ChineseNames) },
