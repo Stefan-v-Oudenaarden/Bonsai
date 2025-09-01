@@ -1,0 +1,46 @@
+﻿@page "/Misc/XKCDCalendarFact"
+
+<PageTitle>Bonsai - XKCD Calendar Facts</PageTitle>
+
+<main>
+
+
+    <div class="flex w-full flex-wrap gap-4 md:flex-nowrap">
+        <h1 class="py-2 text-3xl font-bold">XKCD Calendar Facts</h1>
+
+        <LumexButton class="h-12"
+                     onclick="Generate">
+            <img class="h-10 w-10" src="assets/img/logo/bonsai.png" />
+        </LumexButton>
+    </div>
+
+    <p class="p-2">Fun little calendar facts according to <a href="https://xkcd.com/1930/" target="_blank">XKCD 🔗</a></p>
+
+
+    <LumexDivider Class="mt-4 mb-4" />
+
+    
+    <LumexCard class="max-h-[calc(100vh-255px)] overflow-y-auto">
+        <LumexCardBody>
+            @TheFact
+        </LumexCardBody>
+    </LumexCard>
+    
+</main>
+
+@code {
+    public string TheFact = "";
+
+    private XKCDCalendarfact generator = new XKCDCalendarfact();
+
+
+    protected override void OnInitialized()
+    {
+        Generate();
+    }
+
+    protected void Generate()
+    {
+        TheFact = generator.Next();
+    }
+}

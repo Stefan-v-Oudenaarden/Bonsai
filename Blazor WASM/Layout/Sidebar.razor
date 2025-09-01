@@ -40,9 +40,32 @@
     }
 </ul>
 
+<a ><h3 class="mt-4 mb-2 font-semibold">Misc Generators</h3></a>
+
+<ul class="border-divider space-y-2 border-l">
+
+    @foreach (var item in MiscItems)
+    {
+        <li class="flex items-center gap-2">
+            @if (CurrentPage != item.Name)
+            {
+                <a class="block border-l border-transparent pl-4 no-underline hover:opacity-hover hover:border-foreground-400"
+                   href="misc/@item.Name">@item.DisplayName</a>
+            }
+            else
+            {
+                <a class="block border-l border-transparent pl-4 text-blue-500 no-underline hover:opacity-hover hover:border-foreground-400"
+                   href="misc/@item.Name">@item.DisplayName</a>
+            }
+        </li>
+    }
+</ul>
+
 @code {
     public List<NamesGeneratorItem> RealNamesGeneratorList = RealNamesStaticModel.RealNamesGeneratorList;
     public List<NamesGeneratorItem> FantasyNamesGeneratorList = FantasyNameStaticModel.FantasyNamesGeneratorList;
+
+    public List<(string Name, string DisplayName)> MiscItems = new() { ("XKCDCalendarFact", "XKCD Calendar Fact"), ("GachaCharacter", "Gacha Character") };
 
     [Parameter]
     public string CurrentPage { get; set; } = "";

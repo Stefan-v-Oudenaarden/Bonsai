@@ -1,0 +1,79 @@
+﻿@page "/Misc/GachaCharacter"
+
+<PageTitle>Bonsai - XKCD Calendar Facts</PageTitle>
+
+<main>
+
+
+    <div class="flex w-full flex-wrap gap-4 md:flex-nowrap">
+        <h1 class="py-2 text-3xl font-bold">XKCD Calendar Facts</h1>
+
+        <LumexTextbox class="h-12 w-60"
+                     LabelPlacement="LabelPlacement.Inside" Label="Name"
+                      @bind-Value="@Name" />
+
+        <LumexButton class="h-12"
+                     onclick="GenerateContent">
+            <img class="h-10 w-10" src="assets/img/logo/bonsai.png" />
+        </LumexButton>
+    </div>
+
+    <p class="p-2">Fun little calendar facts according to <a href="https://xkcd.com/1930/" target="_blank">XKCD 🔗</a></p>
+
+
+    <LumexDivider Class="mt-4 mb-4" />
+
+
+    <LumexCard class="max-h-[calc(100vh-255px)] overflow-y-auto">
+        <LumexCardBody>
+            @if (Render)
+            {
+                <h2 class="p-2 text-3xl">@Name</h2>
+
+                <p>
+                    <span class="font-bold">Rarity:</span> @Generator.Rarity.Next()
+                </p>
+
+                <p>
+                    <span class="font-bold">Variants:</span>
+                    @Generator.Variants(Genie.Next(1, 4) + Genie.Next(1, 3))
+                </p>
+
+                <h3 class="p-2 text-2xl">Description</h3>
+
+                <p>
+                    @Generator.ArtDescription
+                </p>
+                <p>
+                    @Generator.Popularity.Next()
+                </p>
+                <p>
+                    @Generator.OptionalPopularity.Next()
+                </p>
+                <p>
+                    @Generator.FanArt
+                </p>
+            }
+        </LumexCardBody>
+    </LumexCard>
+
+</main>
+
+@code {
+    
+    private string Name { get; set; } = "SSR Cute Waifu!";
+    private bool Render = false;
+
+    private GachaCharacterGenerator Generator;
+
+    private void GenerateContent()
+    {
+        Generator = new(Name);
+        Render = true;
+    }
+
+    protected override void OnInitialized()
+    {
+        GenerateContent();
+    }
+}
