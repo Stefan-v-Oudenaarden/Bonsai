@@ -3,9 +3,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text.Json;
 
-namespace Blazor_WASM.Pages
+namespace Blazor_WASM.Pages.Names
 {
-    public partial class NamesDetails
+    public partial class FantasyNamesDetails
     {
         [Parameter]
         public string? Culture { get; set; }
@@ -13,7 +13,7 @@ namespace Blazor_WASM.Pages
         public int? NumberOfNames = 10;
 
         private string CultureDisplayName = "";
-        private RandomNameGenerator generator = new DutchNames();
+        private RandomNameGenerator generator = new HumanNames();
         private List<string> Names = new();
         private List<string> AllNames = new();
         private List<string> MaleNames = new();
@@ -24,9 +24,9 @@ namespace Blazor_WASM.Pages
         {
             var culture = (Culture ?? "default").ToLower();
 
-            var RealNamesGeneratorList = RealNamesStaticModel.RealNamesGeneratorList;
+            var FantasyNamesGeneratorList = FantasyNameStaticModel.FantasyNamesGeneratorList;
 
-            var NameGeneratorItem = RealNamesGeneratorList.Find((item => item.Name == culture));
+            var NameGeneratorItem = FantasyNamesGeneratorList.Find((item => item.Name.ToLower() == culture));
             if (NameGeneratorItem != null)
             {
                 generator = (RandomNameGenerator?)Activator.CreateInstance(NameGeneratorItem.Generator);
@@ -35,7 +35,7 @@ namespace Blazor_WASM.Pages
             }
             else
             {
-                generator = new AllRealNames();
+                generator = new AllFantasyNames();
                 CultureDisplayName = "Error, Country/Culture not found.";
             }
 
@@ -62,39 +62,6 @@ namespace Blazor_WASM.Pages
             AllNames = FemaleNames.Concat(MaleNames).OrderBy(_ => Random.Shared.Next()).ToList();
 
             Names = AllNames.Take(namesCount).ToList();
-            GenerateJson();
-        }
-
-        protected void GenerateJson()
-        {
-            var entries = new List<NameEntry>();
-
-            for (int i = 0; i < NumberOfNames; i++)
-            {
-                string name = "";
-                string gender = "";
-
-                if (Random.Shared.Next(2) == 0)
-                {
-                    name = generator.FemaleFullName();
-                    gender = "female";
-                }
-                else
-                {
-                    name = generator.MaleFullName();
-                    gender = "male";
-                }
-
-                var entry = new NameEntry { Gender = gender, Name = name };
-                entries.Add(entry);
-            }
-
-            JsonNames = JsonSerializer.Serialize(entries, new JsonSerializerOptions() { WriteIndented = true });
-            Console.WriteLine(entries);
-        }
-
-        protected void NumberInputValueChanged(int i)
-        {
         }
     }
 

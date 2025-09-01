@@ -1,4 +1,4 @@
-﻿@page "/Names"
+﻿@page "/RealNames"
 
 <PageTitle>Bonsai - Names</PageTitle>
 
@@ -10,7 +10,7 @@
         @foreach (var item in RealNamesGeneratorList)
         {
             <li>
-                <a href="names/@item.Name">
+                <a href="realnames/@item.Name">
                     <LumexCard Class="h-40 w-64 transition-transform duration-150 hover:scale-105">
                         <img src="@item.CardImage"
                              class="h-full object-cover object-[0_47%]"

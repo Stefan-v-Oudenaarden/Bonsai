@@ -2,6 +2,10 @@
 @import "../../bin/lumexui/theme"; /* theme */
 @source "../../bin/lumexui/*.cs"; /* styles */
 
+:root {
+    --lumex-background: var(--color-zinc-50);
+}
+
 #blazor-error-ui {
     color-scheme: light only;
     background: lightyellow;

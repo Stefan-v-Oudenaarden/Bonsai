@@ -1,24 +1,24 @@
-﻿@page "/Names/{Culture}"
+﻿@page "/FantasyNames/{Culture}"
 
-<PageTitle>Bonsai - Names</PageTitle>
+@using System.Text.Json;
+
+<PageTitle>Bonsai - Fantasy Names</PageTitle>
 
 <main>
 
 
     <div class="flex w-full flex-wrap gap-4 md:flex-nowrap">
         <h1 class="py-2 text-3xl font-bold">@CultureDisplayName</h1>
-        
-        <LumexNumbox             
-            class="h-12 w-40"
-            LabelPlacement="LabelPlacement.Inside" Label="Number of Names"
-            TValue="int?" @bind-Value="@NumberOfNames"
-         />
+
+        <LumexNumbox class="h-12 w-40"
+                     LabelPlacement="LabelPlacement.Inside" Label="Number of Names"
+                     TValue="int?" @bind-Value="@NumberOfNames" />
 
 
 
         <LumexButton class="h-12"
                      onclick="Generate">
-                     <img class="h-10 w-10" src="assets/img/logo/bonsai.png" />
+            <img class="h-10 w-10" src="assets/img/logo/bonsai.png" />
         </LumexButton>
     </div>
 
@@ -27,16 +27,16 @@
 
 
     <div class="flex w-full flex-col">
-        <LumexTabs >
+        <LumexTabs>
             <LumexTab Title="Jumbled">
                 <LumexCard class="max-h-[calc(100vh-255px)] overflow-y-auto">
                     <LumexCardBody>
-                    <ul>
-                        @foreach(var name in Names)
-                        {
-                            <li>@name</li>
-                        }
-                    </ul>
+                        <ul>
+                            @foreach (var name in Names)
+                            {
+                                <li>@name</li>
+                            }
+                        </ul>
                     </LumexCardBody>
                 </LumexCard>
             </LumexTab>
@@ -63,19 +63,12 @@
                         </ul>
                     </LumexCardBody>
                 </LumexCard>
-            </LumexTab>
-            <LumexTab Title="JSON">
-                <LumexCard class="max-h-[calc(100vh-255px)] overflow-y-auto">
-                    <LumexCardBody>
-                        <pre>
-                            @JsonNames
-                        </pre>
-                    </LumexCardBody>
-                </LumexCard>
-            </LumexTab>
+            </LumexTab>            
         </LumexTabs>
     </div>
 
 
 </main>
+
+
 
