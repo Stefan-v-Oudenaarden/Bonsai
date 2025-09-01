@@ -1,0 +1,43 @@
+﻿@page "/Names/Foxhound"
+
+<PageTitle>Bonsai - Foxhound Unit Code Names</PageTitle>
+
+<main>
+
+
+    <div class="flex w-full flex-wrap gap-4 md:flex-nowrap">
+        <h1 class="py-2 text-3xl font-bold">Foxhound Unit Code Names</h1>
+
+        <LumexButton class="h-12"
+                     onclick="Generate">
+            <img class="h-10 w-10" src="assets/img/logo/bonsai.png" />
+        </LumexButton>
+    </div>
+   
+    <LumexDivider Class="mt-4 mb-4" />
+
+
+    <LumexCard class="max-h-[calc(100vh-255px)] overflow-y-auto">
+        <LumexCardBody>
+            @Name
+        </LumexCardBody>
+    </LumexCard>
+
+</main>
+
+@code {
+    public string Name = "";
+
+    private FoxhoundNameGenerator generator = new();
+
+
+    protected override void OnInitialized()
+    {
+        Generate();
+    }
+
+    protected void Generate()
+    {
+        Name = generator.Next();
+    }
+}
