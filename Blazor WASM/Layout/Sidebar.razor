@@ -1,15 +1,58 @@
-﻿<a><h3 class="font-semibold">Names</h3></a>
-<ul>
+﻿@inject NavigationManager NavigationManager
+
+<a href="names"><h3 class="mb-2 font-semibold">Names</h3></a>
+
+<ul class="border-divider space-y-2 border-l">
     
     @foreach (var item in RealNamesGeneratorList)
     {
-    <li>
-        <a href="names/@item.Name">@item.DisplayName</a>
+    <li class="flex items-center gap-2">            
+        @if (CurrentPage != item.Name)
+        {
+            <a class="block border-l border-transparent pl-4 no-underline hover:opacity-hover hover:border-foreground-400" 
+            href="names/@item.Name">@item.DisplayName</a>
+        }else{
+            <a class="block border-l border-transparent pl-4 text-blue-500 no-underline hover:opacity-hover hover:border-foreground-400" 
+            href="names/@item.Name">@item.DisplayName</a>
+        }            
     </li>
-    }
-    
+    }    
 </ul>
 
 @code {
     public List<NamesGeneratorItem> RealNamesGeneratorList = RealNamesStaticModel.RealNamesGeneratorList;
+
+    [Parameter]
+    public string CurrentPage { get; set; } = "";
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += LocationChanged;
+
+    }
+
+    protected override void OnParametersSet()
+    {
+        var current = NavigationManager.Uri.ToString().Split('/').Last();
+
+        if (!string.IsNullOrWhiteSpace(current))
+        {
+            this.CurrentPage = current;
+            StateHasChanged();
+        }
+        
+    }
+
+    void LocationChanged(object sender, LocationChangedEventArgs e)
+    {        
+        var current = e.Location.ToString().Split('/').Last();        
+
+        if (!string.IsNullOrWhiteSpace(current))
+        {
+            this.CurrentPage = current;
+            StateHasChanged();
+        }              
+    }    
+
 }
+

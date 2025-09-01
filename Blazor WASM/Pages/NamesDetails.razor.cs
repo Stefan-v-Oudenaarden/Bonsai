@@ -90,7 +90,6 @@ namespace Blazor_WASM.Pages
             }
 
             JsonNames = JsonSerializer.Serialize(entries, new JsonSerializerOptions() { WriteIndented = true });
-            Console.WriteLine(entries);
         }
 
         protected void NumberInputValueChanged(int i)

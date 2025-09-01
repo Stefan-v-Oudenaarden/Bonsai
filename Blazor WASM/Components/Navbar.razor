@@ -1,5 +1,5 @@
 ﻿<LumexNavbar Sticky="@true" Bordered="@true">
-    <LumexNavbarMenuToggle Class="lg:hidden" @onclick="menuToggleClicked"/>
+    <LumexNavbarMenuToggle Class="lg:hidden" />
     <LumexNavbarBrand>
         <img src="assets/img/logo/bonsai.png" class="mr-4 h-8 w-8">
         <span class="text-xl font-bold">
@@ -29,8 +29,5 @@
 </LumexNavbar>
 
 @code {
-    private void menuToggleClicked(MouseEventArgs args)
-    {
-        Console.WriteLine("clicke menu toggle");
-    }
+    
 }
